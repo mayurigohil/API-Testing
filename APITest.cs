@@ -32,12 +32,9 @@ namespace APITesting
             //Deserialise Jason data in to Text
             BillingOrder actualData = JsonConvert.DeserializeObject<BillingOrder>(response.Content);
 
-            //Assertion
+            //Fluent Assertion validates all the data in one line
             edata.Should().BeEquivalentTo(actualData);
-            Assert.AreEqual(edata.firstName, actualData.firstName);
-            //Assert.AreEqual(edata.lastName, actualData.lastName);
-
-
+           
         }
 
         [Test]
@@ -50,6 +47,8 @@ namespace APITesting
             IRestResponse PutResponse = PutObj.PUT(3, jsonBody);
             BillingOrder actualData = JsonConvert.DeserializeObject<BillingOrder>(PutResponse.Content);
             TestContext.WriteLine(PutResponse.Content);
+            //Fluent Assertion validates all the data in one line
+            edata.Should().BeEquivalentTo(actualData);
         }
         
         [Test]
